@@ -164,13 +164,14 @@ export default function Home() {
               key={item.title}
               className="group relative overflow-hidden rounded-lg border border-primary/20 bg-muted/[0.03] p-8 backdrop-blur-sm transition-all duration-300 hover:border-primary/30"
             >
-              <div className="relative space-y-4">
+              <div className="relative space-y-4 z-10">
                 <div className="text-primary">{item.metric}</div>
                 <h3 className="text-lg text-foreground">{item.title}</h3>
                 <p className="text-sm leading-relaxed text-muted-foreground">
                   {item.description}
                 </p>
               </div>
+              <div className="absolute inset-0 -z-10 bg-gradient-to-br from-primary/[0.07] via-transparent to-transparent opacity-100 transition-opacity duration-300 group-hover:opacity-0" />
             </div>
           ))}
         </div>
@@ -272,7 +273,7 @@ export default function Home() {
               key={app.title}
               className="group relative overflow-hidden rounded-lg border border-primary/20 bg-muted/[0.03] p-8 backdrop-blur-sm transition-all duration-300 hover:border-primary/30"
             >
-              <div className="relative space-y-4">
+              <div className="relative space-y-4 z-10">
                 <h3 className="text-lg text-foreground">{app.title}</h3>
                 <p className="text-sm leading-relaxed text-muted-foreground">
                   {app.description}
@@ -286,6 +287,7 @@ export default function Home() {
                   ))}
                 </ul>
               </div>
+              <div className="absolute inset-0 -z-10 bg-gradient-to-br from-primary/[0.07] via-transparent to-transparent opacity-100 transition-opacity duration-300 group-hover:opacity-0" />
             </div>
           ))}
         </div>
@@ -306,12 +308,13 @@ export default function Home() {
               key={service.title}
               className="group relative overflow-hidden rounded-lg border border-primary/20 bg-muted/[0.03] p-8 backdrop-blur-sm transition-all duration-300 hover:border-primary/30"
             >
-              <div className="space-y-4">
+              <div className="relative space-y-4 z-10">
                 <h3 className="text-lg text-foreground">{service.title}</h3>
                 <p className="text-sm leading-relaxed text-muted-foreground">
                   {service.description}
                 </p>
               </div>
+              <div className="absolute inset-0 -z-10 bg-gradient-to-br from-primary/[0.07] via-transparent to-transparent opacity-100 transition-opacity duration-300 group-hover:opacity-0" />
             </div>
           ))}
         </div>
