@@ -2,10 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  font-family: Arial, Helvetica, sans-serif;
-}
-
 @layer base {
   :root {
     /* Light mode - Clean, professional theme */
@@ -18,8 +14,8 @@ body {
     --popover: 0 0% 98%;
     --popover-foreground: 222 47% 11%;
 
-    /* Solana colors as accents - slightly muted for light mode */
-    --primary: 168 84% 45%;
+    /* Solana colors as accents - adjusted for better light mode readability */
+    --primary: 168 84% 35%; /* Slightly darker for better light mode contrast */
     --primary-foreground: 0 0% 100%;
 
     --secondary: 199 90% 45%;
@@ -38,7 +34,7 @@ body {
 
   .dark {
     /* Darker theme based on OWL's website */
-    --background: 222 47% 4%; /* Much darker background */
+    --background: 222 47% 4%;
     --foreground: 210 40% 98%;
 
     --card: 222 47% 6%;
