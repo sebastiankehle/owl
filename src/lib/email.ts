@@ -8,14 +8,13 @@ export interface EmailData {
 }
 
 export async function sendEmail(data: EmailData) {
-  // Initialize SendGrid with API key
   sendgrid.setApiKey(process.env.SENDGRID_API_KEY!);
 
   const { name, email, subject, message } = data;
 
   const emailContent = {
-    to: process.env.EMAIL_TO!, // Your email address
-    from: process.env.EMAIL_FROM!, // Verified sender email in SendGrid
+    to: process.env.EMAIL_TO!,
+    from: process.env.EMAIL_FROM!,
     subject: `[OWL Contact] ${subject}`,
     text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
     html: `

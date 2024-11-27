@@ -27,12 +27,3 @@ export const slideIn: Variants = {
     transition: { duration: 0.2, ease: "easeOut" },
   },
 };
-
-export const scaleIn: Variants = {
-  hidden: { scale: 0.98, opacity: 0 },
-  visible: {
-    scale: 1,
-    opacity: 1,
-    transition: { duration: 0.2, ease: "easeOut" },
-  },
-};
