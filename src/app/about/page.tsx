@@ -1,4 +1,53 @@
+"use client";
+
+import { Modal } from "@/components/ui/modal";
+import { ArrowRightIcon } from "@radix-ui/react-icons";
+import { useState } from "react";
+
+interface Article {
+  id: string;
+  title: string;
+  excerpt: string;
+  content: string;
+}
+
+const articles: Article[] = [
+  {
+    id: "artificial-lung",
+    title: "3D-Printed Artificial Lung for Veterans",
+    excerpt:
+      "VA scientists working on revolutionary treatment for Veterans affected by lung disease.",
+    content: `VA scientists are working to create a 3D-printed artificial lung that they tout as having the potential to revolutionize the treatment of Veterans affected by lung disease.
+
+One such lung disorder—chronic obstructive pulmonary disease (COPD)—is one of the most prevalent and costliest ailments in the Veteran population.`,
+  },
+  {
+    id: "micro-mirror",
+    title: "3D Micro-Mirror Lithography for Mass Production",
+    excerpt:
+      "Revolutionary additive manufacturing technology for production and manufacturing industries.",
+    content: `This paper address how additive manufacturing will revolutionize production and manufacturing industries, and ultimately determine the scope of what is possible to create. Due to its versatility, additive manufacturing will allow more efficient and cost-effective means of production, prototyping, and innovation. 
+
+Additive manufacturing can create new parts and devices opening up new channels of change in emerging industries, such as microfluidics, medical, and dental. This evolution is equally as critical to private and public entities who desire a competitive edge over the manufacturing market, on both a national and global scale.`,
+  },
+  {
+    id: "mc2",
+    title: "Old World Labs MC2",
+    excerpt: "Super-high-end industrial 3D printer with nanometer resolution.",
+    content: `The OWL MC2 is a super-high-end industrial 3D printer that can print objects of extremely high detail, up to 100 nanometers in resolution. It also carries an extremely high price, ranging from $100,000 to $250,000.`,
+  },
+  {
+    id: "implants",
+    title: "New 3D Printers Could Build Implants, Electronics",
+    excerpt:
+      "3D printing industry moving towards more scientific applications.",
+    content: `Several new 3D printers showcased at CES suggest that the 3D printing industry — best known for churning out brightly colored plastic doodads — could be turning over a new, more scientific leaf...`,
+  },
+];
+
 export default function AboutPage() {
+  const [selectedArticle, setSelectedArticle] = useState<Article | null>(null);
+
   return (
     <div className="relative min-h-screen bg-background">
       {/* Hero Section */}
@@ -151,7 +200,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Media Section - Matching home page cards */}
+      {/* News & Articles Section */}
       <section className="container py-12 md:py-24">
         <div className="mx-auto flex max-w-[980px] flex-col gap-4">
           <div className="w-fit inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 dark:border-primary/10 dark:bg-primary/5 px-3 py-1 text-xs text-primary">
@@ -160,26 +209,49 @@ export default function AboutPage() {
           </div>
 
           <h2 className="text-2xl font-light tracking-tight sm:text-3xl">
-            Old World Labs in the Media
+            Featured Articles
           </h2>
 
-          <div className="mt-8 grid gap-6 sm:grid-cols-2">
-            {mediaHighlights.map((highlight) => (
+          <div className="grid gap-6 sm:grid-cols-2">
+            {articles.map((article) => (
               <div
-                key={highlight.title}
-                className="group relative overflow-hidden rounded-md border border-primary/20 bg-primary/[0.03] dark:border-primary/10 dark:bg-primary/[0.015] p-6 text-sm backdrop-blur-sm transition-all duration-300 hover:border-primary/40 dark:hover:border-primary/30 hover:bg-primary/[0.05] dark:hover:bg-primary/[0.03]"
+                key={article.id}
+                onClick={() => setSelectedArticle(article)}
+                className="group relative overflow-hidden rounded-lg border border-primary/20 bg-primary/[0.03] dark:border-primary/10 dark:bg-primary/[0.015] p-6 transition-all duration-300 hover:border-primary/40 dark:hover:border-primary/30 hover:bg-primary/[0.05] dark:hover:bg-primary/[0.03] cursor-pointer"
               >
-                <div className="text-sm text-primary/80">
-                  {highlight.timeAgo} ago
+                <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_bottom_right,hsl(var(--primary))_0%,transparent_70%)] opacity-[0.05]" />
+                <div className="space-y-3">
+                  <h3 className="text-lg font-light">{article.title}</h3>
+                  <p className="text-sm text-muted-foreground">
+                    {article.excerpt}
+                  </p>
+                  <div className="flex items-center gap-2 text-sm text-primary/80">
+                    <span>Read Article</span>
+                    <ArrowRightIcon className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  </div>
                 </div>
-                <h3 className="mt-2 text-base font-light sm:text-lg">
-                  {highlight.title}
-                </h3>
               </div>
             ))}
           </div>
         </div>
       </section>
+
+      {/* Article Modal */}
+      <Modal
+        isOpen={!!selectedArticle}
+        onClose={() => setSelectedArticle(null)}
+      >
+        {selectedArticle && (
+          <div className="space-y-4">
+            <h2 className="text-2xl font-light">{selectedArticle.title}</h2>
+            <div className="space-y-4 text-muted-foreground">
+              {selectedArticle.content.split("\n\n").map((paragraph, i) => (
+                <p key={i}>{paragraph}</p>
+              ))}
+            </div>
+          </div>
+        )}
+      </Modal>
     </div>
   );
 }
