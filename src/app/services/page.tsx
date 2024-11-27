@@ -96,21 +96,6 @@ export default function ServicesPage() {
   );
 }
 
-const serviceStats = [
-  {
-    value: "5µm",
-    label: "Minimum Feature Size",
-  },
-  {
-    value: "24/7",
-    label: "Production Capability",
-  },
-  {
-    value: "6+",
-    label: "Industries Served",
-  },
-];
-
 const services = [
   {
     title: "3D – Printing as a Service",
