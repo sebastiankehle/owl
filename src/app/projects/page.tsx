@@ -1,3 +1,6 @@
+import { ArrowRightIcon } from "@radix-ui/react-icons";
+import Link from "next/link";
+
 export default function ProjectsPage() {
   return (
     <div className="relative min-h-screen bg-background">
@@ -46,12 +49,20 @@ export default function ProjectsPage() {
 
               <div className="grid gap-8 lg:grid-cols-[2fr,1fr]">
                 <div className="space-y-4">
-                  <h3 className="text-2xl font-light">Abyss Online</h3>
+                  <Link
+                    href="https://www.abyssonline.com"
+                    target="_blank"
+                    className="group/link inline-flex items-center gap-2 hover:text-primary transition-colors"
+                  >
+                    <h3 className="text-2xl font-light">Abyss Online</h3>
+                    <ArrowRightIcon className="h-4 w-4 transition-transform group-hover/link:translate-x-1" />
+                  </Link>
                   <p className="text-base text-muted-foreground">
-                    A groundbreaking MMORPG built in Unreal Engine 5, featuring
-                    eight distinct biomes inspired by real-world cultures. The
-                    game emphasizes player choice and creativity, with deep
-                    crafting systems and strategic gameplay.
+                    A next-generation MMORPG built in Unreal Engine 5, featuring
+                    a unique blend of survival, crafting, and community-driven
+                    world development. Set in a vast world with eight distinct
+                    biomes, each inspired by real-world cultures and
+                    mythologies.
                   </p>
                   <div className="space-y-2">
                     <div className="flex items-center gap-4">
@@ -59,7 +70,7 @@ export default function ProjectsPage() {
                         Technology
                       </div>
                       <div className="text-sm">
-                        Unreal Engine 5, Advanced Physics Simulation
+                        Unreal Engine 5, Advanced Physics, Cloud Infrastructure
                       </div>
                     </div>
                     <div className="flex items-center gap-4">
@@ -67,15 +78,9 @@ export default function ProjectsPage() {
                         Features
                       </div>
                       <div className="text-sm">
-                        Dynamic Combat, Player-Driven Economy, Skill-Based
-                        Progression
+                        Survival Mechanics, Deep Crafting Systems, Player-Driven
+                        Economy
                       </div>
-                    </div>
-                    <div className="flex items-center gap-4">
-                      <div className="w-24 text-sm text-muted-foreground">
-                        Status
-                      </div>
-                      <div className="text-sm">Early Access</div>
                     </div>
                   </div>
                 </div>
@@ -86,17 +91,27 @@ export default function ProjectsPage() {
                   <ul className="space-y-2 text-sm">
                     <li className="flex items-start gap-2">
                       <div className="mt-1.5 h-1 w-1 rounded-full bg-primary/50" />
-                      <span>Eight unique biomes with distinct cultures</span>
+                      <span>Culturally inspired biomes and environments</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <div className="mt-1.5 h-1 w-1 rounded-full bg-primary/50" />
-                      <span>50+ gathering and crafting skills</span>
+                      <span>Advanced survival and crafting mechanics</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <div className="mt-1.5 h-1 w-1 rounded-full bg-primary/50" />
-                      <span>Community-driven world development</span>
+                      <span>Community-shaped world development</span>
                     </li>
                   </ul>
+                  <div className="pt-4">
+                    <Link
+                      href="https://www.abyssonline.com/"
+                      target="_blank"
+                      className="inline-flex items-center gap-2 text-sm text-primary/80 hover:text-primary transition-colors"
+                    >
+                      <span>Explore Game Details</span>
+                      <ArrowRightIcon className="h-4 w-4" />
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>
@@ -107,32 +122,37 @@ export default function ProjectsPage() {
 
               <div className="grid gap-8 lg:grid-cols-[2fr,1fr]">
                 <div className="space-y-4">
-                  <h3 className="text-2xl font-light">Divine</h3>
+                  <Link
+                    href="https://www.chaosanddisorder.ai"
+                    target="_blank"
+                    className="group/link inline-flex items-center gap-2 hover:text-primary transition-colors"
+                  >
+                    <h3 className="text-2xl font-light">Divine</h3>
+                    <ArrowRightIcon className="h-4 w-4 transition-transform group-hover/link:translate-x-1" />
+                  </Link>
                   <p className="text-base text-muted-foreground">
-                    A revolutionary DeFi platform built on Solana, combining
-                    chaos theory with financial innovation. Divine introduces
-                    unique market mechanisms and community-driven governance.
+                    A revolutionary AI system built around the "Hivewave"
+                    concept, where community interaction shapes the AI's
+                    development. Divine actively learns from and engages with
+                    the community across multiple platforms.
                   </p>
                   <div className="space-y-2">
                     <div className="flex items-center gap-4">
                       <div className="w-24 text-sm text-muted-foreground">
                         Platform
                       </div>
-                      <div className="text-sm">Solana Blockchain</div>
+                      <div className="text-sm">
+                        Multi-platform AI Integration
+                      </div>
                     </div>
                     <div className="flex items-center gap-4">
                       <div className="w-24 text-sm text-muted-foreground">
                         Features
                       </div>
                       <div className="text-sm">
-                        DeFi Integration, Innovative Market Mechanics
+                        Community-Driven Evolution, Real-time Learning, Content
+                        Creation
                       </div>
-                    </div>
-                    <div className="flex items-center gap-4">
-                      <div className="w-24 text-sm text-muted-foreground">
-                        Status
-                      </div>
-                      <div className="text-sm">Active Development</div>
                     </div>
                   </div>
                 </div>
@@ -143,17 +163,27 @@ export default function ProjectsPage() {
                   <ul className="space-y-2 text-sm">
                     <li className="flex items-start gap-2">
                       <div className="mt-1.5 h-1 w-1 rounded-full bg-primary/50" />
-                      <span>Advanced DeFi mechanisms</span>
+                      <span>Community-shaped AI development</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <div className="mt-1.5 h-1 w-1 rounded-full bg-primary/50" />
-                      <span>Community governance</span>
+                      <span>Multi-platform feedback integration</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <div className="mt-1.5 h-1 w-1 rounded-full bg-primary/50" />
-                      <span>Solana-powered performance</span>
+                      <span>Autonomous content creation</span>
                     </li>
                   </ul>
+                  <div className="pt-4">
+                    <Link
+                      href="https://www.chaosanddisorder.ai"
+                      target="_blank"
+                      className="inline-flex items-center gap-2 text-sm text-primary/80 hover:text-primary transition-colors"
+                    >
+                      <span>Learn More</span>
+                      <ArrowRightIcon className="h-4 w-4" />
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>
