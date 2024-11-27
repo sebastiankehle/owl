@@ -1,101 +1,478 @@
-import Image from "next/image";
+import { ArrowRightIcon } from "@radix-ui/react-icons";
+import Link from "next/link";
+
+interface Innovation {
+  title: string;
+  metric: string;
+  description: string;
+}
+
+interface Technology {
+  title: string;
+  description: string;
+  features: {
+    title: string;
+    description: string;
+  }[];
+  specs: string[];
+}
+
+interface Application {
+  title: string;
+  description: string;
+  features: string[];
+}
+
+interface Stat {
+  label: string;
+  value: string;
+  description: string;
+}
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <div className="relative min-h-screen bg-background">
+      {/* Hero Section with enhanced visual elements */}
+      <div className="relative min-h-[90vh] overflow-hidden">
+        {/* Gradient mesh background */}
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,hsl(var(--primary))_0%,transparent_85%)] opacity-[0.03]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,hsl(var(--secondary))_0%,transparent_50%)] opacity-[0.03]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_60%,hsl(var(--accent))_0%,transparent_50%)] opacity-[0.03]" />
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+          {/* Animated grid with perspective */}
+          <div
+            className="absolute inset-0 bg-grid-white/[0.015] bg-[size:60px_60px]"
+            style={{
+              transform:
+                "perspective(1000px) rotateX(70deg) translateY(-50%) scale(2)",
+              transformOrigin: "50% 0%",
+              maskImage:
+                "linear-gradient(to bottom, transparent, black 30%, black 70%, transparent)",
+            }}
+          />
+
+          {/* Noise texture */}
+          <div className="absolute inset-0 bg-noise opacity-[0.015]" />
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+
+        {/* Hero content with improved layout */}
+        <div className="container relative flex min-h-[90vh] flex-col items-center justify-center">
+          <div className="relative space-y-6 text-center">
+            {/* Floating accent elements */}
+            <div className="absolute -left-4 top-0 h-24 w-24 rounded-full bg-primary/10 blur-xl" />
+            <div className="absolute -right-4 bottom-0 h-24 w-24 rounded-full bg-secondary/10 blur-xl" />
+
+            {/* Main content */}
+            <div className="relative space-y-2">
+              <div className="inline-flex items-center gap-2 rounded-full border border-primary/10 bg-primary/5 px-3 py-1 text-xs text-primary">
+                <span className="inline-block h-1.5 w-1.5 rounded-full bg-primary" />
+                FOUNDED IN 2012
+              </div>
+
+              <h1 className="relative bg-gradient-to-b from-foreground to-foreground/70 bg-clip-text text-4xl font-light tracking-tight text-transparent sm:text-5xl md:text-6xl lg:text-7xl">
+                Uncompromising Precision in
+                <br />
+                <span className="relative inline-block bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
+                  Advanced Manufacturing
+                </span>
+              </h1>
+            </div>
+
+            <p className="mx-auto max-w-[42rem] text-base text-muted-foreground sm:text-lg">
+              Providing innovative solutions for microfluidic devices, medical
+              devices, semiconductor connectors, and automated testing with
+              industry-leading precision and quality.
+            </p>
+
+            {/* Enhanced CTA section */}
+            <div className="flex flex-wrap items-center justify-center gap-4 pt-8">
+              <Link
+                href="/services"
+                className="group relative flex h-12 items-center justify-center gap-2 overflow-hidden rounded-md border border-primary/10 bg-primary/5 px-6 text-sm text-foreground backdrop-blur-sm transition-all duration-300 hover:border-primary/20 hover:bg-primary/10"
+              >
+                <span className="relative z-10">Explore Our Technology</span>
+                <ArrowRightIcon className="relative z-10 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                <div className="absolute inset-0 -z-10 bg-gradient-to-r from-primary/0 via-primary/5 to-secondary/5 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+              </Link>
+
+              <Link
+                href="/contact"
+                className="group flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
+              >
+                Contact Us
+                <ArrowRightIcon className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+              </Link>
+            </div>
+          </div>
+        </div>
+
+        {/* Enhanced scroll indicator */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
+          <div className="flex flex-col items-center gap-2">
+            <div className="h-12 w-[1px] bg-gradient-to-b from-muted-foreground/20 to-transparent">
+              <div className="h-1/2 w-full animate-scroll bg-gradient-to-b from-muted-foreground/40 to-transparent" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Stats with visual enhancements */}
+      <section className="relative border-y border-muted/10 bg-muted/5 py-24">
+        <div className="container">
+          <div className="mb-12 text-center">
+            <h2 className="text-2xl font-light text-foreground">
+              Manufacturing Capabilities
+            </h2>
+          </div>
+          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+            {stats.map((stat) => (
+              <div
+                key={stat.label}
+                className="group relative overflow-hidden rounded-lg border border-primary/20 bg-muted/[0.03] p-8 backdrop-blur-sm transition-all duration-300 hover:border-primary/30"
+              >
+                <div className="space-y-2">
+                  <div className="text-sm text-muted-foreground">
+                    {stat.label}
+                  </div>
+                  <div className="text-3xl font-light tracking-tight text-foreground">
+                    {stat.value}
+                  </div>
+                  <p className="text-xs text-muted-foreground/80">
+                    {stat.description}
+                  </p>
+                </div>
+                <div className="absolute inset-0 -z-10 bg-gradient-to-br from-primary/[0.07] via-transparent to-transparent opacity-100 transition-opacity duration-300 group-hover:opacity-0" />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Innovation Highlights */}
+      <section className="container relative z-10 py-32">
+        <div className="mb-16">
+          <p className="mb-3 text-sm text-primary">BREAKTHROUGH TECHNOLOGY</p>
+          <h2 className="max-w-3xl text-3xl font-light text-foreground">
+            Pushing the Boundaries of What's Possible
+          </h2>
+        </div>
+
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          {innovations.map((item) => (
+            <div
+              key={item.title}
+              className="group relative overflow-hidden rounded-lg border border-primary/20 bg-muted/[0.03] p-8 backdrop-blur-sm transition-all duration-300 hover:border-primary/30"
+            >
+              <div className="relative space-y-4">
+                <div className="text-primary">{item.metric}</div>
+                <h3 className="text-lg text-foreground">{item.title}</h3>
+                <p className="text-sm leading-relaxed text-muted-foreground">
+                  {item.description}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Core Technologies */}
+      <section className="relative border-y border-muted/10 bg-muted/5 py-32">
+        <div className="container relative z-10">
+          <div className="mb-16">
+            <p className="mb-3 text-sm text-primary">CORE TECHNOLOGIES</p>
+            <h2 className="max-w-2xl text-3xl font-light text-foreground">
+              Advanced Manufacturing Solutions
+            </h2>
+          </div>
+
+          <div className="grid gap-16">
+            {technologies.map((tech, index) => (
+              <div
+                key={tech.title}
+                className="relative rounded-lg border border-primary/20 bg-muted/[0.03] p-8 backdrop-blur-sm transition-all duration-300 hover:border-primary/30"
+              >
+                {/* Technology Header */}
+                <div className="mb-8 flex items-start justify-between gap-8">
+                  <div className="space-y-4">
+                    <div className="inline-flex h-6 items-center gap-2 rounded-full border border-primary/25 bg-primary/[0.05] px-3 text-xs text-primary">
+                      <span className="font-mono">
+                        {String(index + 1).padStart(2, "0")}
+                      </span>
+                      <span className="h-1 w-1 rounded-full bg-primary" />
+                      <span>CORE TECHNOLOGY</span>
+                    </div>
+                    <h3 className="text-2xl text-foreground">{tech.title}</h3>
+                    <p className="max-w-2xl text-muted-foreground">
+                      {tech.description}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Technology Details Grid */}
+                <div className="grid gap-8 lg:grid-cols-2">
+                  {/* Features Column */}
+                  <div className="space-y-6">
+                    <h4 className="text-sm font-medium text-foreground">
+                      Key Features
+                    </h4>
+                    <div className="grid gap-4">
+                      {tech.features.map((feature) => (
+                        <div
+                          key={feature.title}
+                          className="relative rounded-lg border border-primary/15 bg-muted/[0.03] p-4 transition-all duration-300 hover:border-primary/25"
+                        >
+                          <div className="mb-2 text-sm font-medium text-foreground">
+                            {feature.title}
+                          </div>
+                          <p className="text-sm text-muted-foreground">
+                            {feature.description}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Specs Column */}
+                  <div className="space-y-6">
+                    <h4 className="text-sm font-medium text-foreground">
+                      Technical Specifications
+                    </h4>
+                    <div className="grid gap-3">
+                      {tech.specs.map((spec) => (
+                        <div
+                          key={spec}
+                          className="flex items-center gap-3 rounded-lg border border-primary/15 bg-muted/[0.03] p-4 text-sm text-muted-foreground transition-all duration-300 hover:border-primary/25"
+                        >
+                          <div className="h-1 w-1 shrink-0 rounded-full bg-primary" />
+                          {spec}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Industry Applications */}
+      <section className="container relative z-10 py-32">
+        <div className="mb-16">
+          <p className="mb-3 text-sm text-primary">APPLICATIONS</p>
+          <h2 className="max-w-2xl text-3xl font-light text-foreground">
+            Industry Solutions
+          </h2>
+        </div>
+
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          {applications.map((app) => (
+            <div
+              key={app.title}
+              className="group relative overflow-hidden rounded-lg border border-primary/20 bg-muted/[0.03] p-8 backdrop-blur-sm transition-all duration-300 hover:border-primary/30"
+            >
+              <div className="relative space-y-4">
+                <h3 className="text-lg text-foreground">{app.title}</h3>
+                <p className="text-sm leading-relaxed text-muted-foreground">
+                  {app.description}
+                </p>
+                <ul className="space-y-2 text-sm text-muted-foreground">
+                  {app.features.map((feature) => (
+                    <li key={feature} className="flex items-start gap-2">
+                      <span className="mt-1.5 block h-1 w-1 rounded-full bg-primary" />
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Services */}
+      <section className="container relative z-10 py-32">
+        <div className="mb-16">
+          <p className="mb-3 text-sm text-primary">OUR SERVICES</p>
+          <h2 className="max-w-2xl text-3xl font-light text-foreground">
+            Comprehensive Manufacturing Solutions
+          </h2>
+        </div>
+
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          {services.map((service) => (
+            <div
+              key={service.title}
+              className="group relative overflow-hidden rounded-lg border border-primary/20 bg-muted/[0.03] p-8 backdrop-blur-sm transition-all duration-300 hover:border-primary/30"
+            >
+              <div className="space-y-4">
+                <h3 className="text-lg text-foreground">{service.title}</h3>
+                <p className="text-sm leading-relaxed text-muted-foreground">
+                  {service.description}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
     </div>
   );
 }
+
+const innovations = [
+  {
+    title: "Quantum-Scale Precision",
+    metric: "150nm",
+    description:
+      "Industry-leading resolution enabling features as small as 150 nanometers, pushing the boundaries of micro-manufacturing.",
+  },
+  {
+    title: "Advanced Materials",
+    metric: "20+",
+    description:
+      "Proprietary photopolymer resins developed specifically for high-performance applications across industries.",
+  },
+  {
+    title: "Global Impact",
+    metric: "15+",
+    description:
+      "Countries served with our advanced manufacturing solutions, transforming industries worldwide.",
+  },
+];
+
+const technologies = [
+  {
+    title: "Two-Photon Lithography",
+    description:
+      "Our flagship technology enables true 3D printing at the microscale, achieving unprecedented precision and complexity in manufactured components.",
+    features: [
+      {
+        title: "Direct Laser Writing",
+        description:
+          "Ultra-precise 3D structuring through focused femtosecond laser pulses.",
+      },
+      {
+        title: "Proprietary Materials",
+        description:
+          "Custom-developed photopolymers optimized for specific applications.",
+      },
+      {
+        title: "Advanced Control Systems",
+        description:
+          "Real-time monitoring and adjustment for optimal print quality.",
+      },
+    ],
+    specs: [
+      "Resolution: Down to 150nm feature size",
+      "Build Volume: Up to 100mm³",
+      "Layer Thickness: 100nm - 1µm",
+      "Surface Roughness: Ra < 10nm",
+    ],
+  },
+  {
+    title: "Micro-Precision Manufacturing",
+    description:
+      "Comprehensive manufacturing solutions combining additive and subtractive processes for complex micro-components.",
+    features: [
+      {
+        title: "Hybrid Manufacturing",
+        description: "Integration of multiple processes for optimal results.",
+      },
+      {
+        title: "Quality Control",
+        description: "Advanced metrology and inspection at every stage.",
+      },
+      {
+        title: "Process Optimization",
+        description: "Continuous improvement through data-driven analysis.",
+      },
+    ],
+    specs: [
+      "Positioning Accuracy: ±0.5µm",
+      "Surface Finish: Ra 0.1µm",
+      "Material Options: Polymers, Metals, Ceramics",
+      "Clean Room: ISO Class 6",
+    ],
+  },
+];
+
+const applications: Application[] = [
+  {
+    title: "Medical Devices",
+    description:
+      "Enabling next-generation medical devices through micro-precision manufacturing and advanced materials.",
+    features: [
+      "Microfluidic devices for diagnostics and drug delivery",
+      "Minimally invasive surgical instruments",
+      "Implantable medical devices",
+      "Bio-compatible micro-structures",
+      "Custom medical components",
+    ],
+  },
+  {
+    title: "Semiconductor",
+    description:
+      "Supporting the advancement of semiconductor technology with ultra-precise components and solutions.",
+    features: [
+      "Advanced packaging solutions",
+      "High-density interconnects",
+      "Micro-lens arrays",
+      "Precision alignment structures",
+      "Custom IC packaging components",
+    ],
+  },
+  {
+    title: "Aerospace & Defense",
+    description:
+      "Delivering mission-critical components with unmatched precision for aerospace and defense applications.",
+    features: [
+      "Optical components and systems",
+      "Sensor integration solutions",
+      "RF/Microwave components",
+      "Precision mechanical parts",
+      "Custom aerospace components",
+    ],
+  },
+];
+
+const stats: Stat[] = [
+  {
+    label: "Founded",
+    value: "2012",
+    description: "By Nick Liverman, pioneering micro-precision manufacturing",
+  },
+  {
+    label: "Patent Granted",
+    value: "2017",
+    description: "Production of 3D objects by stereolithography",
+  },
+  {
+    label: "Industries",
+    value: "6+",
+    description: "Biotech, Medical, Semiconductor, Aerospace, Automotive, R&D",
+  },
+  {
+    label: "Precision",
+    value: "150nm",
+    description: "Ultra-precise feature size for advanced applications",
+  },
+];
+
+const services = [
+  {
+    title: "3D Printing as a Service",
+    description:
+      "Customized printing solutions tailored to your unique needs, ensuring precision and quality in every print.",
+  },
+  {
+    title: "Industrial-Scale Printers",
+    description:
+      "State-of-the-art industrial printers designed for high-volume production, delivering unmatched speed and accuracy.",
+  },
+  {
+    title: "Modeling and Simulation",
+    description:
+      "Utilizing Unreal Engine 5 to create immersive 3D environments for precise simulations, enhancing design and testing processes.",
+  },
+];

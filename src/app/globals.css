@@ -2,20 +2,75 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+body {
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    /* Light mode - Clean, professional theme */
+    --background: 0 0% 100%;
+    --foreground: 222 47% 11%;
+
+    --card: 0 0% 98%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 98%;
+    --popover-foreground: 222 47% 11%;
+
+    /* Solana colors as accents - slightly muted for light mode */
+    --primary: 168 84% 45%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 199 90% 45%;
+    --secondary-foreground: 0 0% 100%;
+
+    --accent: 271 90% 55%;
+    --accent-foreground: 0 0% 100%;
+
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 25% 27%;
+
+    --border: 214.3 32% 91%;
+    --input: 214.3 32% 91%;
+    --ring: 168 84% 45%;
+  }
+
+  .dark {
+    /* Darker theme based on OWL's website */
+    --background: 222 47% 4%; /* Much darker background */
+    --foreground: 210 40% 98%;
+
+    --card: 222 47% 6%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 47% 6%;
+    --popover-foreground: 210 40% 98%;
+
+    /* Brighter Solana colors for dark mode contrast */
+    --primary: 168 94% 51%;
+    --primary-foreground: 222 47% 11%;
+
+    --secondary: 199 100% 50%;
+    --secondary-foreground: 210 40% 98%;
+
+    --accent: 271 100% 63%;
+    --accent-foreground: 210 40% 98%;
+
+    --muted: 223 47% 11%;
+    --muted-foreground: 215 20% 65%;
+
+    --border: 216 34% 12%;
+    --input: 216 34% 12%;
+    --ring: 168 94% 51%;
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
 }
