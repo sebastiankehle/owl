@@ -60,7 +60,7 @@ export default function ContactPage() {
         error: null,
       });
       setFormData({ name: "", email: "", subject: "", message: "" });
-    } catch (error) {
+    } catch {
       setFormState({
         isLoading: false,
         isSuccess: false,
