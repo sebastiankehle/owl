@@ -75,7 +75,8 @@ export default function ProjectsPage() {
 
             <p className="mx-auto max-w-[42rem] text-base text-muted-foreground sm:text-lg">
               From immersive gaming worlds to revolutionary DeFi platforms,
-              we're pushing the boundaries of technology and user experience.
+              we&apos;re pushing the boundaries of technology and user
+              experience.
             </p>
           </div>
         </div>

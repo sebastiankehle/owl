@@ -78,9 +78,9 @@ export default function AboutPage() {
                 <div className="space-y-4">
                   <h2 className="text-xl font-light">Our Mission</h2>
                   <p className="text-base text-muted-foreground">
-                    Founded in 2012, we're dedicated to advancing manufacturing
-                    through innovative micro-precision technology, delivering
-                    solutions that transform industries.
+                    Founded in 2012, we&apos;re dedicated to advancing
+                    manufacturing through innovative micro-precision technology,
+                    delivering solutions that transform industries.
                   </p>
                 </div>
               </div>
@@ -317,41 +317,5 @@ const milestones = [
     year: 2012,
     title: "OWL FOUNDED",
     achievements: [],
-  },
-];
-
-const mediaHighlights = [
-  {
-    title:
-      "Researchers strive to make 3D-printed artificial lung to help Vets with respiratory disease",
-    timeAgo: "6 years",
-  },
-  {
-    title: "3D micro-mirror lithography for mass production",
-    timeAgo: "7 years",
-  },
-  {
-    title: "Old World Labs MC2",
-    timeAgo: "9 years",
-  },
-  {
-    title:
-      "Bye, Bye Baubles: New 3D Printers Could Build Implants, Electronics",
-    timeAgo: "10 years",
-  },
-];
-
-const aboutStats = [
-  {
-    value: "2012",
-    label: "Founded",
-  },
-  {
-    value: "5µm",
-    label: "Feature Size",
-  },
-  {
-    value: "10+",
-    label: "Patents",
   },
 ];

@@ -1,22 +1,6 @@
 import { ArrowRightIcon } from "@radix-ui/react-icons";
 import Link from "next/link";
 
-interface Innovation {
-  title: string;
-  metric: string;
-  description: string;
-}
-
-interface Technology {
-  title: string;
-  description: string;
-  features: {
-    title: string;
-    description: string;
-  }[];
-  specs: string[];
-}
-
 interface Application {
   title: string;
   description: string;
@@ -82,7 +66,7 @@ export default function Home() {
             <p className="mx-auto max-w-[42rem] text-base text-muted-foreground sm:text-lg">
               Providing innovative solutions for microfluidic devices, medical
               devices, semiconductor connectors, and automated testing with
-              industry-leading precision and quality.
+              industry&apos;s leading precision and quality.
             </p>
 
             {/* Enhanced CTA section */}

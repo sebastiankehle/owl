@@ -25,8 +25,8 @@ export default function ServicesPage() {
 
             <div className="relative mt-8 flex flex-col items-center">
               <p className="max-w-[42rem] text-base text-muted-foreground sm:text-lg">
-                In collaboration with academic and research institutions, we're
-                pushing the boundaries of scientific exploration and
+                In collaboration with academic and research institutions,
+                we&apos;re pushing the boundaries of scientific exploration and
                 manufacturing capabilities.
               </p>
 

@@ -232,7 +232,7 @@ export default function ContactPage() {
 
                 {formState.isSuccess && (
                   <div className="rounded-md border border-primary/10 bg-primary/5 p-4 text-sm text-primary">
-                    Message sent successfully! We'll get back to you soon.
+                    Message sent successfully! We&apos;ll get back to you soon.
                   </div>
                 )}
 
