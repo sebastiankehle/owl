@@ -1,4 +1,9 @@
+"use client";
+
+import { AnimatedSection } from "@/components/ui/animated-section";
+import { fadeIn, slideIn, staggerContainer } from "@/lib/animations";
 import { ArrowRightIcon } from "@radix-ui/react-icons";
+import { motion } from "framer-motion";
 import Link from "next/link";
 
 interface Application {
@@ -48,9 +53,14 @@ export default function Home() {
             <div className="absolute -right-4 bottom-0 h-24 w-24 rounded-full bg-secondary/10 blur-xl" />
 
             {/* Main content */}
-            <div className="relative space-y-2">
+            <motion.div
+              className="relative space-y-2"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3 }}
+            >
               <div className="inline-flex items-center gap-2 rounded-full border border-primary/10 bg-primary/5 px-3 py-1 text-xs text-primary">
-                <span className="inline-block h-1.5 w-1.5 rounded-full bg-primary" />
+                <span className="inline-block h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
                 FOUNDED IN 2012
               </div>
 
@@ -61,16 +71,26 @@ export default function Home() {
                   Advanced Manufacturing
                 </span>
               </h1>
-            </div>
+            </motion.div>
 
-            <p className="mx-auto max-w-[42rem] text-base text-muted-foreground sm:text-lg">
+            <motion.p
+              className="mx-auto max-w-[42rem] text-base text-muted-foreground sm:text-lg"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3, delay: 0.1 }}
+            >
               Providing innovative solutions for microfluidic devices, medical
               devices, semiconductor connectors, and automated testing with
               industry&apos;s leading precision and quality.
-            </p>
+            </motion.p>
 
             {/* Enhanced CTA section */}
-            <div className="flex flex-wrap items-center justify-center gap-4 pt-8">
+            <motion.div
+              className="flex flex-wrap items-center justify-center gap-4 pt-8"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3, delay: 0.2 }}
+            >
               <Link
                 href="/services"
                 className="group relative flex h-12 items-center justify-center gap-2 overflow-hidden rounded-md border border-primary/10 bg-primary/5 px-6 text-sm text-foreground backdrop-blur-sm transition-all duration-300 hover:border-primary/20 hover:bg-primary/10"
@@ -87,33 +107,48 @@ export default function Home() {
                 Contact Us
                 <ArrowRightIcon className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
               </Link>
-            </div>
+            </motion.div>
           </div>
         </div>
 
         {/* Enhanced scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
+        <motion.div
+          className="absolute bottom-8 left-1/2 -translate-x-1/2"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.3, delay: 0.3 }}
+        >
           <div className="flex flex-col items-center gap-2">
             <div className="h-12 w-[1px] bg-gradient-to-b from-muted-foreground/20 to-transparent">
               <div className="h-1/2 w-full animate-scroll bg-gradient-to-b from-muted-foreground/40 to-transparent" />
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
 
       {/* Stats with visual enhancements */}
-      <section className="relative border-y border-muted/10 bg-muted/5 py-24">
+      <AnimatedSection className="relative border-y border-muted/10 bg-muted/5 py-24">
         <div className="container">
-          <div className="mb-12 text-center">
+          <motion.div variants={fadeIn} className="mb-12 text-center">
             <h2 className="text-2xl font-light text-foreground">
               Manufacturing Capabilities
             </h2>
-          </div>
-          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-            {stats.map((stat) => (
-              <div
+          </motion.div>
+
+          <motion.div
+            variants={staggerContainer}
+            className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4"
+          >
+            {stats.map((stat, index) => (
+              <motion.div
                 key={stat.label}
-                className="group relative overflow-hidden rounded-lg border border-primary/20 bg-muted/[0.03] p-8 backdrop-blur-sm transition-all duration-300 hover:border-primary/30"
+                variants={fadeIn}
+                custom={index}
+                whileHover={{
+                  scale: 1.01,
+                  transition: { duration: 0.2 },
+                }}
+                className="group relative overflow-hidden rounded-lg border border-primary/20 bg-muted/[0.02] p-8 backdrop-blur-sm transition-all duration-200 hover:border-primary/30"
               >
                 <div className="space-y-2">
                   <div className="text-sm text-muted-foreground">
@@ -127,26 +162,35 @@ export default function Home() {
                   </p>
                 </div>
                 <div className="absolute inset-0 -z-10 bg-gradient-to-br from-primary/[0.07] via-transparent to-transparent opacity-100 transition-opacity duration-300 group-hover:opacity-0" />
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
-      </section>
+      </AnimatedSection>
 
       {/* Innovation Highlights */}
-      <section className="container relative z-10 py-32">
-        <div className="mb-16">
+      <AnimatedSection className="container relative z-10 py-32">
+        <motion.div variants={slideIn} className="mb-16">
           <p className="mb-3 text-sm text-primary">BREAKTHROUGH TECHNOLOGY</p>
           <h2 className="max-w-3xl text-3xl font-light text-foreground">
             Pushing the Boundaries of What's Possible
           </h2>
-        </div>
+        </motion.div>
 
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {innovations.map((item) => (
-            <div
+        <motion.div
+          variants={staggerContainer}
+          className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3"
+        >
+          {innovations.map((item, index) => (
+            <motion.div
               key={item.title}
-              className="group relative overflow-hidden rounded-lg border border-primary/20 bg-muted/[0.03] p-8 backdrop-blur-sm transition-all duration-300 hover:border-primary/30"
+              variants={fadeIn}
+              custom={index}
+              whileHover={{
+                scale: 1.02,
+                boxShadow: "0 0 30px -5px rgba(var(--primary), 0.2)",
+              }}
+              className="group relative overflow-hidden rounded-lg border border-primary/20 bg-muted/[0.03] p-8 backdrop-blur-sm transition-colors duration-300 hover:border-primary/30"
             >
               <div className="relative space-y-4 z-10">
                 <div className="text-primary">{item.metric}</div>
@@ -156,26 +200,29 @@ export default function Home() {
                 </p>
               </div>
               <div className="absolute inset-0 -z-10 bg-gradient-to-br from-primary/[0.07] via-transparent to-transparent opacity-100 transition-opacity duration-300 group-hover:opacity-0" />
-            </div>
+            </motion.div>
           ))}
-        </div>
-      </section>
+        </motion.div>
+      </AnimatedSection>
 
       {/* Core Technologies */}
-      <section className="relative border-y border-muted/10 bg-muted/5 py-32">
+      <AnimatedSection className="relative border-y border-muted/10 bg-muted/5 py-32">
         <div className="container relative z-10">
-          <div className="mb-16">
+          <motion.div variants={fadeIn} className="mb-16">
             <p className="mb-3 text-sm text-primary">CORE TECHNOLOGIES</p>
             <h2 className="max-w-2xl text-3xl font-light text-foreground">
               Advanced Manufacturing Solutions
             </h2>
-          </div>
+          </motion.div>
 
-          <div className="grid gap-16">
+          <motion.div variants={staggerContainer} className="grid gap-16">
             {technologies.map((tech, index) => (
-              <div
+              <motion.div
                 key={tech.title}
-                className="relative rounded-lg border border-primary/20 bg-muted/[0.03] p-8 backdrop-blur-sm transition-all duration-300 hover:border-primary/30"
+                variants={fadeIn}
+                custom={index}
+                whileHover={{ scale: 1.01 }}
+                className="relative rounded-lg border border-primary/20 bg-muted/[0.03] p-8 backdrop-blur-sm transition-colors duration-300 hover:border-primary/30"
               >
                 {/* Technology Header */}
                 <div className="mb-8 flex items-start justify-between gap-8">
@@ -236,26 +283,35 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
-      </section>
+      </AnimatedSection>
 
       {/* Industry Applications */}
-      <section className="container relative z-10 py-32">
-        <div className="mb-16">
+      <AnimatedSection className="container relative z-10 py-32">
+        <motion.div variants={slideIn} className="mb-16">
           <p className="mb-3 text-sm text-primary">APPLICATIONS</p>
           <h2 className="max-w-2xl text-3xl font-light text-foreground">
             Industry Solutions
           </h2>
-        </div>
+        </motion.div>
 
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {applications.map((app) => (
-            <div
+        <motion.div
+          variants={staggerContainer}
+          className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3"
+        >
+          {applications.map((app, index) => (
+            <motion.div
               key={app.title}
-              className="group relative overflow-hidden rounded-lg border border-primary/20 bg-muted/[0.03] p-8 backdrop-blur-sm transition-all duration-300 hover:border-primary/30"
+              variants={fadeIn}
+              custom={index}
+              whileHover={{
+                scale: 1.02,
+                boxShadow: "0 0 30px -5px rgba(var(--primary), 0.2)",
+              }}
+              className="group relative overflow-hidden rounded-lg border border-primary/20 bg-muted/[0.03] p-8 backdrop-blur-sm transition-colors duration-300 hover:border-primary/30"
             >
               <div className="relative space-y-4 z-10">
                 <h3 className="text-lg text-foreground">{app.title}</h3>
@@ -272,25 +328,34 @@ export default function Home() {
                 </ul>
               </div>
               <div className="absolute inset-0 -z-10 bg-gradient-to-br from-primary/[0.07] via-transparent to-transparent opacity-100 transition-opacity duration-300 group-hover:opacity-0" />
-            </div>
+            </motion.div>
           ))}
-        </div>
-      </section>
+        </motion.div>
+      </AnimatedSection>
 
       {/* Services */}
-      <section className="container relative z-10 py-32">
-        <div className="mb-16">
+      <AnimatedSection className="container relative z-10 py-32">
+        <motion.div variants={slideIn} className="mb-16">
           <p className="mb-3 text-sm text-primary">OUR SERVICES</p>
           <h2 className="max-w-2xl text-3xl font-light text-foreground">
             Comprehensive Manufacturing Solutions
           </h2>
-        </div>
+        </motion.div>
 
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {services.map((service) => (
-            <div
+        <motion.div
+          variants={staggerContainer}
+          className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3"
+        >
+          {services.map((service, index) => (
+            <motion.div
               key={service.title}
-              className="group relative overflow-hidden rounded-lg border border-primary/20 bg-muted/[0.03] p-8 backdrop-blur-sm transition-all duration-300 hover:border-primary/30"
+              variants={fadeIn}
+              custom={index}
+              whileHover={{
+                scale: 1.02,
+                boxShadow: "0 0 30px -5px rgba(var(--primary), 0.2)",
+              }}
+              className="group relative overflow-hidden rounded-lg border border-primary/20 bg-muted/[0.03] p-8 backdrop-blur-sm transition-colors duration-300 hover:border-primary/30"
             >
               <div className="relative space-y-4 z-10">
                 <h3 className="text-lg text-foreground">{service.title}</h3>
@@ -299,10 +364,10 @@ export default function Home() {
                 </p>
               </div>
               <div className="absolute inset-0 -z-10 bg-gradient-to-br from-primary/[0.07] via-transparent to-transparent opacity-100 transition-opacity duration-300 group-hover:opacity-0" />
-            </div>
+            </motion.div>
           ))}
-        </div>
-      </section>
+        </motion.div>
+      </AnimatedSection>
     </div>
   );
 }
